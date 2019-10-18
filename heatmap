@@ -1,7 +1,7 @@
 library(gplots)
 library(RColorBrewer)
 
-# 第一个数据
+# for data_A
 df <- read.table ("/Users/chaochen/Downloads/homo_heat.csv", 
                     header = TRUE, sep = ",", quote = "\"", dec = ".", 
                     fill = TRUE, comment.char = "", na.strings = "NA", row.names = "Accession")
@@ -19,8 +19,7 @@ hv <- heatmap.2(x, col=rev(brewer.pal(9,"RdBu")), scale="row", tracecol="#303030
 
 dev.off()
 
-
-# 第二个数据
+#  for data_B
 df <- read.table ("/Users/chaochen/Downloads/heter_heat.csv", 
                   header = TRUE, sep = ",", quote = "\"", dec = ".", 
                   fill = TRUE, comment.char = "", na.strings = "NA", row.names = "Accession")
@@ -28,12 +27,10 @@ head(df)
 
 x  <- as.matrix(df)
 
-
 #tiff("/Users/chaochen/Downloads/heatmap_gr2-gr3.tiff", width=1686, height=2300)
 
 #pdf(file="/Users/chaochen/Downloads/myplot_gr2-gr3.pdf")
 #hv <- heatmap.2(x, col=rev(brewer.pal(9,"RdBu")), scale="row", tracecol="#303030", keysize=1.5)
 hv <- heatmap.2(x, col=rev(brewer.pal(9,"RdBu")), scale="row", trace="none", keysize=1.5)
-
 
 dev.off()
