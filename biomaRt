@@ -1,0 +1,36 @@
+library("biomaRt")
+
+listMarts()
+
+ensembl = useMart("ensembl",dataset="mmusculus_gene_ensembl",ensemblRedirect=FALSE)
+listDatasets(ensembl)
+
+# 这是一步法选择 XX的ensembl数据库代码。
+
+
+#读取工作表
+DATA_all<-data.frame(read.csv("trans_u_d.csv", header=TRUE, na.strings=c("")))
+
+
+
+DATA_gene_name<-(DATA_all[,1])
+
+
+DATA_gene_name
+
+#看看数据集里面有什么
+attributes = listAttributes(ensembl)
+attributes[1:50,]
+
+grep(pattern = "uniprot",attributes[,1])   
+attributes[81:83,]
+
+#基因名称是"attributes"，ids是"Filter"，具体看values.
+
+
+data_entrezgene<-getBM(attributes=c('uniprotsptrembl','external_gene_name'), 
+      filters = 'uniprotsptrembl', values =DATA_gene_name, mart = ensembl)
+length(DATA_gene_name)
+dim(data_entrezgene)
+head(data_entrezgene)
+write.csv(data_entrezgene,'up_down_data_entrezgene.csv')
