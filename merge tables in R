@@ -1,0 +1,11 @@
+DATA_1<-data.frame(read.csv("11homozygous.csv", header=TRUE, na.strings=c("")))
+
+DATA_2<-data.frame(read.csv("11homozygous.csv", header=TRUE, na.strings=c("")))
+
+head(DATA_1)
+names(DATA_2)[1]<-"Accession"
+head (DATA_2)
+DATA_3<-merge(DATA_1,DATA_2,by= "Accession" )
+head(DATA_3)
+
+write.csv(DATA_3,"DATA_homo_merge_more.csv")
