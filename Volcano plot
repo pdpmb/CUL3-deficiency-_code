@@ -1,12 +1,8 @@
-
 library("edgeR")
 
 exprSet_all<-read.csv("txts_Gr2-Gr3.csv",sep=",",header=TRUE,row.names = 1)  
-
 rt=as.matrix(exprSet_all) 
-
 rownames(rt)=rt[,2] 
-
 exp=rt[,3:ncol(rt)] 
 
 head(exp)
@@ -35,7 +31,6 @@ et <- exactTest(y,pair = c("cul","GFAP"))
 topTags(et)
 
 ordered_tags <- topTags(et, n=100000) 
-
 
 allDiff=ordered_tags$table
 
