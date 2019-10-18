@@ -1,5 +1,4 @@
 DATA_1<-data.frame(read.csv("11homozygous.csv", header=TRUE, na.strings=c("")))
-
 DATA_2<-data.frame(read.csv("11homozygous.csv", header=TRUE, na.strings=c("")))
 
 head(DATA_1)
